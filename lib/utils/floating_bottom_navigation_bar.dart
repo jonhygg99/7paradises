@@ -12,31 +12,34 @@ class FloatingBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      color: Colors.transparent,
-      elevation: 0.0,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Container(
-            width: 260.0,
-            height: 60.0,
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0),
-              color: Colors.white,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0.0,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              width: 260.0,
+              height: 60.0,
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.0),
+                color: Colors.white,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  _navBarItem(kHomeIconData, NavigationBarState.Home),
+                  _navBarItem(kFavouriteIconData, NavigationBarState.Favourite),
+                  _navBarItem(kProfileIconData, NavigationBarState.Profile),
+                ],
+              ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                _navBarItem(kHomeIconData, NavigationBarState.Home),
-                _navBarItem(kFavouriteIconData, NavigationBarState.Favourite),
-                _navBarItem(kProfileIconData, NavigationBarState.Profile),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
