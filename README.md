@@ -1,16 +1,15 @@
-# seven_paradises
+# 7paradises
 
-A new Flutter project.
+## Flutter enable web support
+>flutter channel beta
+>
+>flutter upgrade
+>
+>flutter config --enable-web
 
-## Getting Started
+## Run project
+Is highly recommended to use chrome for the web development
+>flutter run -d chrome --web-port 8080
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+If you don't have chrome you can use:
+>flutter run -d web-server --web-port 8080
