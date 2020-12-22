@@ -27,9 +27,6 @@ class AppComponentState extends State<AppComponent> {
     final app = MaterialApp(
       title: '7paradises',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       onGenerateRoute: Application.router.generator,
     );
     return app;

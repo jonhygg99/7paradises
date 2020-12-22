@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:seven_paradises/constants/enum.dart';
-import 'package:seven_paradises/utils/mobileLayout.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:seven_paradises/views/home/device/mobile.dart';
+import 'package:seven_paradises/views/home/device/web.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController textController;
+
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: MobileLayout(
-        refreshPage: () {},
-        state: NavigationBarState.Home,
-        view: Center(
-          child: Text('Home'),
-        ),
+      child: ScreenTypeLayout(
+        desktop: WebHomeScreen(textController: textController),
+        mobile: MobileHomeScreen(textController: textController),
       ),
     );
   }

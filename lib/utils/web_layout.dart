@@ -2,27 +2,28 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_paradises/config/application.dart';
 import 'package:seven_paradises/config/routes.dart';
+import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/enum.dart';
 
 import 'floating_bottom_navigation_bar.dart';
 
-class MobileLayout extends StatefulWidget {
-  MobileLayout(
-      {@required this.state, @required this.view, @required this.refreshPage});
+class WebLayout extends StatefulWidget {
+  WebLayout({@required this.state, @required this.view});
   final int state;
   final Widget view;
-  final Function refreshPage;
 
   @override
-  _MobileLayoutState createState() => _MobileLayoutState();
+  _WebLayoutState createState() => _WebLayoutState();
 }
 
-class _MobileLayoutState extends State<MobileLayout> {
+class _WebLayoutState extends State<WebLayout> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Align(alignment: Alignment.center, child: widget.view),
+        backgroundColor: kLightWhite,
+        body: Align(alignment: Alignment.topCenter, child: widget.view),
+        extendBody: true,
         bottomNavigationBar: FloatingBottomNavigationBar(
           state: widget.state,
           onItemTapped: _onItemTapped,

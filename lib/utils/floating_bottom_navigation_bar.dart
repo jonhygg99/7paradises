@@ -20,22 +20,24 @@ class FloatingBottomNavigationBar extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Container(
-              width: 260.0,
-              height: 60.0,
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.0),
-                color: Colors.white,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  _navBarItem(kHomeIconData, NavigationBarState.Home),
-                  _navBarItem(kFavouriteIconData, NavigationBarState.Favourite),
-                  _navBarItem(kProfileIconData, NavigationBarState.Profile),
-                ],
+            Material(
+              elevation: 5,
+              borderRadius: BorderRadius.circular(30.0),
+              color: kWhite,
+              child: Container(
+                width: 260.0,
+                height: 60.0,
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    _navBarItem(kHomeIconData, NavigationBarState.Home),
+                    _navBarItem(
+                        kFavouriteIconData, NavigationBarState.Favourite),
+                    _navBarItem(kProfileIconData, NavigationBarState.Profile),
+                  ],
+                ),
               ),
             ),
           ],
