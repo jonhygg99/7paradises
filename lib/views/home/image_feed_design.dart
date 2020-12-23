@@ -28,7 +28,7 @@ class ImageFeedDesign extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage(image),
+                  image: NetworkImage(image),
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(15.0)),
               ),

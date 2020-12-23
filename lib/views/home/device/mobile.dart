@@ -13,21 +13,14 @@ class MobileHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MobileLayout(
       state: NavigationBarState.Home,
-      view: Padding(
+      view: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GreetingsMessage(
-                username: 'Emily',
-              ),
-              SearchField(textController: textController),
-              const SizedBox(height: 20.0),
-              ImageFeed(),
-            ],
-          ),
-        ),
+        children: [
+          GreetingsMessage(username: 'Emily'),
+          SearchField(textController: textController),
+          const SizedBox(height: 20.0),
+          ImageFeed(),
+        ],
       ),
     );
   }
