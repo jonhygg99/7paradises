@@ -4,6 +4,7 @@ import 'package:seven_paradises/config/application.dart';
 import 'package:seven_paradises/config/routes.dart';
 import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/enum.dart';
+import 'package:seven_paradises/constants/measures.dart';
 
 import 'floating_bottom_navigation_bar.dart';
 
@@ -22,7 +23,19 @@ class _WebLayoutState extends State<WebLayout> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: kLightWhite,
-        body: Align(alignment: Alignment.topCenter, child: widget.view),
+        body: Align(
+          alignment: Alignment.topCenter,
+          child: Padding(
+            padding: const EdgeInsets.only(
+                left: kDefaultWebPadding, right: kDefaultWebPadding),
+            child: ListView(
+              children: [
+                const SizedBox(height: 80.0),
+                widget.view,
+              ],
+            ),
+          ),
+        ),
         extendBody: true,
         bottomNavigationBar: FloatingBottomNavigationBar(
           state: widget.state,

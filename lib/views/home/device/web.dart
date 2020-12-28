@@ -12,13 +12,15 @@ class WebHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WebLayout(
       state: NavigationBarState.Home,
-      view: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        children: [
-          SearchField(textController: textController),
-          const SizedBox(height: 20.0),
-          ImageFeed(),
-        ],
+      view: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          children: [
+            SearchField(textController: textController),
+            const SizedBox(height: 20.0),
+            ImageFeed(),
+          ],
+        ),
       ),
     );
   }
