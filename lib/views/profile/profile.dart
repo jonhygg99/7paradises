@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:seven_paradises/constants/enum.dart';
-import 'package:seven_paradises/utils/mobile_layout.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+
+import 'device/mobile.dart';
+import 'device/web.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: MobileLayout(
-        state: NavigationBarState.Profile,
-        view: Center(
-          child: Text('Profile'),
-        ),
+      child: ScreenTypeLayout(
+        desktop: WebProfileScreen(),
+        mobile: MobileProfileScreen(),
       ),
     );
   }

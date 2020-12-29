@@ -3,3 +3,5 @@ class NavigationBarState {
   static const int Favourite = 1;
   static const int Profile = 2;
 }
+
+enum SocialMedia { Instagram, Twitter, Facebook, YouTube }

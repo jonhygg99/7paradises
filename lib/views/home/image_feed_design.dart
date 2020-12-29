@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:seven_paradises/constants/colors.dart';
+import 'package:seven_paradises/constants/icons.dart';
 
 class ImageFeedDesign extends StatelessWidget {
   ImageFeedDesign({this.image, this.place, this.height});
@@ -45,14 +45,7 @@ class ImageFeedDesign extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-          bottom: 10,
-          right: 15,
-          child: FaIcon(
-            FontAwesomeIcons.instagram,
-            color: kWhite,
-          ),
-        ),
+        Positioned(bottom: 10, right: 15, child: kInstagramLigth),
       ],
     );
   }
