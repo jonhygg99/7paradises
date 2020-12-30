@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:seven_paradises/constants/enum.dart';
-import 'package:seven_paradises/utils/mobile_layout.dart';
+import 'package:seven_paradises/utils/device_layouts/mobile_layout.dart';
 
-import '../greetings_message.dart';
-import '../image_feed.dart';
-import '../search_field.dart';
+import '../../../utils/image_feed/image_feed.dart';
+import '../widgets/greetings_message.dart';
+import '../widgets/search_field.dart';
 
 class MobileHomeScreen extends StatelessWidget {
   MobileHomeScreen({this.textController});

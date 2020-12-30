@@ -4,38 +4,29 @@ import 'package:seven_paradises/config/application.dart';
 import 'package:seven_paradises/config/routes.dart';
 import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/enum.dart';
-import 'package:seven_paradises/constants/measures.dart';
+import 'package:seven_paradises/constants/icons.dart';
 
-import 'floating_bottom_navigation_bar.dart';
+import '../floating_bottom_navigation_bar.dart';
 
-class WebLayout extends StatefulWidget {
-  WebLayout({@required this.state, @required this.view});
+class MobileLayout extends StatefulWidget {
+  MobileLayout({@required this.state, @required this.view});
   final int state;
   final Widget view;
 
   @override
-  _WebLayoutState createState() => _WebLayoutState();
+  _MobileLayoutState createState() => _MobileLayoutState();
 }
 
-class _WebLayoutState extends State<WebLayout> {
+class _MobileLayoutState extends State<MobileLayout> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: widget.state == NavigationBarState.Profile
+            ? getSettingsAppBar()
+            : null,
         backgroundColor: kLightWhite,
-        body: Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(
-                left: kDefaultWebPadding, right: kDefaultWebPadding),
-            child: ListView(
-              children: [
-                const SizedBox(height: 80.0),
-                widget.view,
-              ],
-            ),
-          ),
-        ),
+        body: Align(alignment: Alignment.topCenter, child: widget.view),
         extendBody: true,
         bottomNavigationBar: FloatingBottomNavigationBar(
           state: widget.state,
@@ -55,5 +46,22 @@ class _WebLayoutState extends State<WebLayout> {
     else
       Application.router
           .navigateTo(context, Routes.profile, transition: TransitionType.none);
+  }
+
+  AppBar getSettingsAppBar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 20.0),
+          child: GestureDetector(
+            onTap: () {},
+            child: kSettingsIcon,
+          ),
+        )
+      ],
+    );
   }
 }

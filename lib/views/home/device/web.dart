@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:seven_paradises/constants/enum.dart';
-import 'package:seven_paradises/utils/web_layout.dart';
+import 'package:seven_paradises/utils/device_layouts/web_layout.dart';
 
-import '../image_feed.dart';
-import '../search_field.dart';
+import '../../../utils/image_feed/image_feed.dart';
+import '../widgets/search_field.dart';
 
 class WebHomeScreen extends StatelessWidget {
   WebHomeScreen({this.textController});
