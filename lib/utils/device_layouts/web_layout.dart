@@ -7,6 +7,7 @@ import 'package:seven_paradises/constants/enum.dart';
 import 'package:seven_paradises/constants/measures.dart';
 
 import '../floating_bottom_navigation_bar.dart';
+import 'settings_app_bar.dart';
 
 class WebLayout extends StatefulWidget {
   WebLayout({@required this.state, @required this.view});
@@ -22,6 +23,9 @@ class _WebLayoutState extends State<WebLayout> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: widget.state == NavigationBarState.Profile
+            ? settingsAppBar()
+            : null,
         backgroundColor: kLightWhite,
         body: Align(
           alignment: Alignment.topCenter,

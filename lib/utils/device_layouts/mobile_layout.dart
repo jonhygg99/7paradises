@@ -4,9 +4,9 @@ import 'package:seven_paradises/config/application.dart';
 import 'package:seven_paradises/config/routes.dart';
 import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/enum.dart';
-import 'package:seven_paradises/constants/icons.dart';
 
 import '../floating_bottom_navigation_bar.dart';
+import 'settings_app_bar.dart';
 
 class MobileLayout extends StatefulWidget {
   MobileLayout({@required this.state, @required this.view});
@@ -23,7 +23,7 @@ class _MobileLayoutState extends State<MobileLayout> {
     return SafeArea(
       child: Scaffold(
         appBar: widget.state == NavigationBarState.Profile
-            ? getSettingsAppBar()
+            ? settingsAppBar()
             : null,
         backgroundColor: kLightWhite,
         body: Align(alignment: Alignment.topCenter, child: widget.view),
@@ -46,22 +46,5 @@ class _MobileLayoutState extends State<MobileLayout> {
     else
       Application.router
           .navigateTo(context, Routes.profile, transition: TransitionType.none);
-  }
-
-  AppBar getSettingsAppBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20.0),
-          child: GestureDetector(
-            onTap: () {},
-            child: kSettingsIcon,
-          ),
-        )
-      ],
-    );
   }
 }

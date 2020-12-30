@@ -30,7 +30,6 @@ class ImageFeed extends StatelessWidget {
           horizontalValue = 5;
           tileQuantity = 2;
         }
-
         return StaggeredGridView.count(
           primary: false,
           crossAxisCount: horizontalValue,

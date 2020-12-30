@@ -32,14 +32,14 @@ class SocialMediaBubbles extends StatelessWidget {
 
   Widget _getSocialMediaDesign(SocialMedia socialMedia, String url) {
     return MaterialButton(
-      minWidth: 0.0,
+      minWidth: 5.0,
       elevation: 0.5,
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(12.0),
       ),
       color: kWhite,
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(15.0),
       child: _getIcon(socialMedia),
       onPressed: () {
         try {
