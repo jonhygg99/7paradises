@@ -5,10 +5,10 @@ import 'package:seven_paradises/constants/icons.dart';
 
 class FloatingBottomNavigationBar extends StatelessWidget {
   FloatingBottomNavigationBar(
-      {@required this.state, @required this.onItemTapped});
+      {@required this.state, @required this.navigateTo});
 
   final int state;
-  final Function onItemTapped;
+  final Function navigateTo;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +32,12 @@ class FloatingBottomNavigationBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    _navBarItem(kHomeIconData, NavigationBarState.Home),
                     _navBarItem(
-                        kFavouriteIconData, NavigationBarState.Favourite),
-                    _navBarItem(kProfileIconData, NavigationBarState.Profile),
+                        context, kHomeIconData, NavigationBarState.Home),
+                    _navBarItem(context, kFavouriteIconData,
+                        NavigationBarState.Favourite),
+                    _navBarItem(
+                        context, kProfileIconData, NavigationBarState.Profile),
                   ],
                 ),
               ),
@@ -46,9 +48,9 @@ class FloatingBottomNavigationBar extends StatelessWidget {
     );
   }
 
-  Widget _navBarItem(IconData icon, int itemState) {
+  Widget _navBarItem(BuildContext context, IconData icon, int itemState) {
     return InkWell(
-      onTap: () => onItemTapped(itemState),
+      onTap: () => navigateTo(context, itemState, state),
       borderRadius: BorderRadius.circular(8),
       child: Icon(
         icon,

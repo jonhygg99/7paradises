@@ -16,6 +16,7 @@ class MobileHomeScreen extends StatelessWidget {
       view: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         children: [
+          const SizedBox(height: 20.0),
           GreetingsMessage(username: 'Emily'),
           SearchField(textController: textController),
           const SizedBox(height: 20.0),

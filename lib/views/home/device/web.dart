@@ -18,7 +18,10 @@ class WebHomeScreen extends StatelessWidget {
           children: [
             SearchField(textController: textController),
             const SizedBox(height: 20.0),
-            ImageFeed(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: ImageFeed(),
+            ),
           ],
         ),
       ),

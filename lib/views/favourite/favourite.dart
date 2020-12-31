@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:seven_paradises/constants/enum.dart';
-import 'package:seven_paradises/utils/device_layouts/mobile_layout.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
-class FavouriteScreen extends StatelessWidget {
+import 'device/mobile.dart';
+import 'device/web.dart';
+
+class FavouriteScreen extends StatefulWidget {
+  @override
+  _FavouriteScreenState createState() => _FavouriteScreenState();
+}
+
+class _FavouriteScreenState extends State<FavouriteScreen> {
+  bool value = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: MobileLayout(
-        state: NavigationBarState.Favourite,
-        view: Center(
-          child: Text('Favourite'),
-        ),
+      child: ScreenTypeLayout(
+        desktop: WebFavouriteScreen(value: value, toggle: toggleValue),
+        mobile: MobileFavouriteScreen(value: value, toggle: toggleValue),
       ),
     );
+  }
+
+  void toggleValue() {
+    setState(() {
+      value = !value;
+    });
   }
 }

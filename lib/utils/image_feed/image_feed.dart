@@ -27,7 +27,7 @@ class ImageFeed extends StatelessWidget {
           tileQuantity = 1;
         } else if (sizingInformation.deviceScreenType ==
             DeviceScreenType.desktop) {
-          horizontalValue = 5;
+          horizontalValue = 4;
           tileQuantity = 2;
         }
         return StaggeredGridView.count(

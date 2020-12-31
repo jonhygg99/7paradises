@@ -36,7 +36,11 @@ class MobileProfileScreen extends StatelessWidget {
             const SizedBox(height: 20.0),
             SocialMediaBubbles(),
             const SizedBox(height: 20.0),
-            NewTabBarView(value: value, toggle: toggle),
+            NewTabBarView(
+              value: value,
+              toggle: toggle,
+              tabBarNames: ['Gallery', 'Liked'],
+            ),
           ],
         ),
       ),
