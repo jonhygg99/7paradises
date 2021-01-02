@@ -10,7 +10,7 @@ class FavouriteScreen extends StatefulWidget {
 }
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
-  bool value = false;
+  bool value = true;
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,6 @@ class CollectionFeed extends StatelessWidget {
     return Wrap(
       runSpacing: 10.0,
       spacing: 10.0,
-      // direction: Axis.vertical,
       children: _getChildren(),
     );
   }
