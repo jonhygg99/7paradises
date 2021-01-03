@@ -6,30 +6,32 @@ import '../floating_bottom_navigation_bar.dart';
 import 'navigation.dart';
 import 'settings_app_bar.dart';
 
-class MobileLayout extends StatefulWidget {
-  MobileLayout({@required this.state, @required this.view});
+class MobileLayout extends StatelessWidget {
   final int state;
   final Widget view;
+  final bool isBottomNavigation;
+  final Widget bottomSheet;
+  MobileLayout(
+      {@required this.state,
+      @required this.view,
+      this.isBottomNavigation = true,
+      this.bottomSheet});
 
-  @override
-  _MobileLayoutState createState() => _MobileLayoutState();
-}
-
-class _MobileLayoutState extends State<MobileLayout> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: widget.state == NavigationBarState.Profile
-            ? settingsAppBar()
-            : null,
+        appBar: state == NavigationBarState.Profile ? settingsAppBar() : null,
         backgroundColor: kLightWhite,
-        body: Align(alignment: Alignment.topCenter, child: widget.view),
+        body: Align(alignment: Alignment.topCenter, child: view),
         extendBody: true,
-        bottomNavigationBar: FloatingBottomNavigationBar(
-          state: widget.state,
-          navigateTo: navigateTo,
-        ),
+        bottomSheet: bottomSheet,
+        bottomNavigationBar: isBottomNavigation
+            ? FloatingBottomNavigationBar(
+                state: state,
+                navigateTo: navigateTo,
+              )
+            : null,
       ),
     );
   }

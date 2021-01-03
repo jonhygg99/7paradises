@@ -13,14 +13,44 @@ class PlaceScreen extends StatefulWidget {
 
 class _PlaceScreenState extends State<PlaceScreen> {
   TextEditingController textController;
+  bool isEmpty = true;
+  bool isLiked = false;
   @override
+  void initState() {
+    textController = TextEditingController();
+    super.initState();
+  }
+
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Material(
       child: ScreenTypeLayout(
         desktop: WebPlaceScreen(textController: textController, id: widget.id),
-        mobile:
-            MobilePlaceScreen(textController: textController, id: widget.id),
+        mobile: MobilePlaceScreen(
+          textController: textController,
+          id: widget.id,
+          isEmpty: isEmpty,
+          isLiked: isLiked,
+          toggleIsEmpty: toggleIsEmpty,
+          toggleIsLike: toggleIsLike,
+        ),
       ),
     );
+  }
+
+  void toggleIsEmpty(value) {
+    setState(() {
+      if (value.isEmpty)
+        isEmpty = true;
+      else if (value.isNotEmpty && isEmpty) isEmpty = false;
+    });
+  }
+
+  void toggleIsLike() {
+    setState(() => isLiked = !isLiked);
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:seven_paradises/config/application.dart';
 import 'package:seven_paradises/constants/colors.dart';
@@ -82,52 +80,7 @@ class TopView extends StatelessWidget {
           ),
         ),
         Positioned(bottom: 30.0, right: 20, child: kInstagramLigth),
-        Positioned(
-          left: MediaQuery.of(context).size.width / 2 - 70.0,
-          bottom: -30.0,
-          child: Row(
-            children: [
-              MiddleButton(isLeft: true, iconData: Icons.add),
-              MiddleButton(
-                isLeft: false,
-                iconData: Icons.airplanemode_active,
-                rotate: true,
-              ),
-            ],
-          ),
-        ),
       ],
-    );
-  }
-}
-
-class MiddleButton extends StatelessWidget {
-  final bool isLeft;
-  final bool rotate;
-  final IconData iconData;
-  MiddleButton(
-      {@required this.isLeft, @required this.iconData, this.rotate = false});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 70.0,
-      height: 60.0,
-      decoration: BoxDecoration(
-        color: kWhite,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(isLeft ? 50 : 0),
-          bottomLeft: Radius.circular(isLeft ? 50 : 0),
-          topRight: Radius.circular(isLeft ? 0 : 50),
-          bottomRight: Radius.circular(isLeft ? 0 : 50),
-        ),
-      ),
-      child: Transform.rotate(
-        angle: rotate ? 45 * pi / 180 : 0,
-        child: Icon(
-          iconData,
-          color: kBlack,
-        ),
-      ),
     );
   }
 }

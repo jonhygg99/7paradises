@@ -11,7 +11,7 @@ const IconData kFavouriteIconData = Icons.favorite;
 const Icon kProfileIcon = Icon(Icons.person_pin);
 const IconData kProfileIconData = Icons.person_pin;
 
-//ProfileScreen
+// Profile Screen
 Icon kSettingsIcon = Icon(Icons.settings, color: kBlack);
 const FaIcon kInstagramLigth =
     FaIcon(FontAwesomeIcons.instagram, color: kWhite);
@@ -19,3 +19,10 @@ FaIcon kInstagramDark = FaIcon(FontAwesomeIcons.instagram, color: kBlack);
 FaIcon kTwitterDark = FaIcon(FontAwesomeIcons.twitter, color: kBlack);
 FaIcon kFacebookDark = FaIcon(FontAwesomeIcons.facebook, color: kBlack);
 FaIcon kYouTubeDark = FaIcon(FontAwesomeIcons.youtube, color: kBlack);
+
+// Place Screen
+const IconData kAddData = Icons.add;
+const IconData kAirplaneData = Icons.airplanemode_active;
+const IconData kSendIconData = Icons.send;
+const Icon kNoLike = Icon(Icons.favorite_outline_rounded);
+const Icon kLike = Icon(Icons.favorite, color: Colors.red);
