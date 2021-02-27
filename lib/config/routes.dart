@@ -10,6 +10,7 @@ class Routes {
   static String favourite = "/favourite";
   static String profile = "/profile";
   static String place = "/place/:id";
+  static String addNewPost = "/addNewPost";
 
   static void configureRoutes(FluroRouter router) {
     router.define(root, handler: homeHandler);
@@ -17,5 +18,6 @@ class Routes {
     router.define(favourite, handler: favouriteHandler);
     router.define(profile, handler: profileHandler);
     router.define(place, handler: placeHandler);
+    router.define(addNewPost, handler: addNewPostHandler);
   }
 }

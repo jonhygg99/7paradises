@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:seven_paradises/config/application.dart';
 import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/icons.dart';
+import 'package:seven_paradises/utils/backButton.dart';
 
 class TopView extends StatelessWidget {
   final String id;
@@ -23,23 +23,7 @@ class TopView extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          top: 20.0,
-          left: 20.0,
-          child: InkWell(
-            //TODO: hover color (Button pressed sensation)
-            onTap: () => Application.router.pop(context),
-            child: Container(
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),
-              ),
-              child: Icon(Icons.arrow_back_rounded),
-            ),
-          ),
-        ),
+        Positioned(top: 20.0, left: 20.0, child: BackButtonDesign()),
         Positioned(
           top: 20.0,
           right: 20.0,

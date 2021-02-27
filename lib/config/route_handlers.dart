@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:seven_paradises/views/addNewPost/addNewPost.dart';
 import 'package:seven_paradises/views/favourite/favourite.dart';
 import 'package:seven_paradises/views/home/home.dart';
 import 'package:seven_paradises/views/place/place.dart';
@@ -23,4 +24,9 @@ Handler profileHandler = Handler(
 Handler placeHandler = Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
       PlaceScreen(params["id"][0]),
+);
+
+Handler addNewPostHandler = Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
+      AddNewPostScreen(),
 );
