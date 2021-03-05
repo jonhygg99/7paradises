@@ -4,6 +4,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:http/http.dart' as http;
 
 import 'album/album.dart';
+import 'album/album_paging.dart';
 import 'photo/photo_paging.dart';
 
 class Facebook {
@@ -11,7 +12,7 @@ class Facebook {
   Map<String, dynamic> _userData;
   AccessToken _accessToken;
 
-  Future<void> login(isChecking, isNotChecking, addUserData) async {
+  Future<void> login(isChecking, isNotChecking, isLoggedFB) async {
     try {
       isChecking();
       // by default the login method has the next permissions ['email','public_profile']
@@ -21,8 +22,9 @@ class Facebook {
       _userData =
           await FacebookAuth.instance.getUserData(fields: "name,photos");
       print(_userData);
-      addUserData(_userData);
+      isLoggedFB(true);
     } on FacebookAuthException catch (e) {
+      isLoggedFB(false);
       switch (e.errorCode) {
         case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
           print("You have a previous login operation in progress");
@@ -43,24 +45,23 @@ class Facebook {
     }
   }
 
-  Future<void> logOut(addUserData) async {
+  Future<void> logOut(isLoggedFB) async {
     await FacebookAuth.instance.logOut();
     _accessToken = null;
     _userData = null;
-    addUserData(null);
+    isLoggedFB(false);
   }
 
-  Future<void> checkIfIsLogged(isNotChecking, addUserData) async {
+  Future<void> checkIfIsLogged(isNotChecking, isLoggedFB) async {
     _accessToken = await FacebookAuth.instance.isLogged;
     isNotChecking();
     if (_accessToken != null) {
-      // now you can call to  FacebookAuth.instance.getUserData();
       _userData =
           await FacebookAuth.instance.getUserData(fields: "name,photos");
       print(_userData);
-      // final userData = await FacebookAuth.instance.getUserData(fields: "email,birthday,friends,gender,link");
-      addUserData(_userData);
-    }
+      isLoggedFB(true);
+    } else
+      isLoggedFB(false);
   }
 
   Future<void> getImageUploadedByID(id) async {
@@ -77,7 +78,7 @@ class Facebook {
     // /{user-id}/photos?type=uploaded
   }
 
-  Future<void> fetchAlbums([String nextUrl]) async {
+  Future<AlbumPaging> fetchAlbums([String nextUrl]) async {
     String url = /*nextUrl ??*/
         '$_FBApiEndpoint/${_userData['id']}/albums?fields=cover_photo{source},id,name,count&access_token=${_accessToken.token}';
     http.Response response = await http.get(Uri.parse(url));
@@ -89,7 +90,7 @@ class Facebook {
     else
       print(body);
 
-    // return AlbumPaging.fromJson(body);
+    return AlbumPaging.fromJson(body);
   }
 
   Future<PhotoPaging> fetchPhotosFromAlbum(Album album,
