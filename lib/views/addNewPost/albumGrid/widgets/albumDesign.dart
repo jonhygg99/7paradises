@@ -1,40 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:seven_paradises/constants/colors.dart';
+import 'package:seven_paradises/model/facebook/album/album.dart';
 
 class AlbumDesign extends StatelessWidget {
-  final String image;
-  final String title;
-  final int count;
-  AlbumDesign({this.image, this.title = '', this.count = 1});
+  final Album album;
+  final Function onAlbumSelected;
+  AlbumDesign({@required this.album, @required this.onAlbumSelected});
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     final imageWidth = width / 2 - 40.0;
     final countWidth = width / 5 - 40.0;
-    return image == null
-        ? SizedBox(
-            width: imageWidth,
-            height: imageWidth,
-            // child: CircularProgressIndicator()
-          )
-        : SizedBox(
-            width: imageWidth,
-            height: imageWidth,
+    return album == null
+        ? CircularProgressIndicator()
+        : RaisedButton(
+            onPressed: () => onAlbumSelected(album),
+            padding: const EdgeInsets.all(0.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
             child: Stack(
               children: [
                 Container(
-                  width: imageWidth,
-                  height: imageWidth,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage(image),
+                      image: NetworkImage(album.coverPhoto),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
                 ),
                 Positioned(
-                  bottom: 0,
+                  top: imageWidth - 30.0,
                   child: Container(
                     width: imageWidth,
                     height: 30.0,
@@ -51,7 +48,7 @@ class AlbumDesign extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Center(
                         child: Text(
-                          title,
+                          album.name,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: kWhite, fontWeight: FontWeight.bold),
@@ -79,7 +76,7 @@ class AlbumDesign extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Center(
                         child: Text(
-                          count.toString(),
+                          album.count.toString(),
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: kWhite,

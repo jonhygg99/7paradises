@@ -4,6 +4,7 @@ import 'package:seven_paradises/model/facebook/album/album.dart';
 import 'package:seven_paradises/model/facebook/album/album_paging.dart';
 import 'package:seven_paradises/model/facebook/facebook.dart';
 import 'package:seven_paradises/model/facebook/photo/photo.dart';
+import 'package:seven_paradises/views/addNewPost/photoGrid/photoGrid.dart';
 
 import 'device/mobile.dart';
 import 'device/web.dart';
@@ -35,7 +36,8 @@ class _AlbumGridState extends State<AlbumGrid> {
     return Material(
       child: ScreenTypeLayout(
         desktop: WebAlbumGrid(),
-        mobile: MobileAlbumGrid(albums: _albums),
+        mobile:
+            MobileAlbumGrid(albums: _albums, onAlbumSelected: onAlbumSelected),
       ),
     );
   }
@@ -46,5 +48,17 @@ class _AlbumGridState extends State<AlbumGrid> {
       _albums.addAll(albums.data);
       _albumsNextLink = albums.pagination.next;
     });
+  }
+
+  void onAlbumSelected(Album album) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PhotoGrid(
+          facebook: widget.facebook,
+          album: album,
+        ),
+      ),
+    );
   }
 }

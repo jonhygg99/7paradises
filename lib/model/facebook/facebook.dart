@@ -64,20 +64,6 @@ class Facebook {
       isLoggedFB(false);
   }
 
-  Future<void> getImageUploadedByID(id) async {
-    // final response = await http.get(
-    //   '$_FBApiEndpoint/325096330958084?fields=picture',
-    //   headers: {'Authorization': 'Bearer $_accessToken.token'},
-    // );
-    // final response = await http.get(
-    //   'https://graph.facebook.com/$id?fields=picture',
-    //   headers: {HttpHeaders.authorizationHeader: accessToken.token},
-    // );
-    // Map<String, dynamic> body = json.decode(response.body);
-    // print(body);
-    // /{user-id}/photos?type=uploaded
-  }
-
   Future<AlbumPaging> fetchAlbums([String nextUrl]) async {
     String url = /*nextUrl ??*/
         '$_FBApiEndpoint/${_userData['id']}/albums?fields=cover_photo{source},id,name,count&access_token=${_accessToken.token}';
@@ -104,6 +90,7 @@ class Facebook {
       print('Error fetch album with id: ${album.id}.\n'
           'Status code: ${response.statusCode}');
 
+    print(body);
     return PhotoPaging.fromJson(body);
   }
 }

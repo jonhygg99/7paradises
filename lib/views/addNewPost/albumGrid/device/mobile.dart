@@ -9,7 +9,8 @@ import 'package:seven_paradises/views/addNewPost/albumGrid/widgets/albumDesign.d
 
 class MobileAlbumGrid extends StatefulWidget {
   final List<Album> albums;
-  MobileAlbumGrid({@required this.albums});
+  final Function onAlbumSelected;
+  MobileAlbumGrid({@required this.albums, @required this.onAlbumSelected});
 
   @override
   _MobileAlbumGridState createState() => _MobileAlbumGridState();
@@ -18,11 +19,7 @@ class MobileAlbumGrid extends StatefulWidget {
 class _MobileAlbumGridState extends State<MobileAlbumGrid> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    // 24 is for notification bar on Android
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 3;
-    final double imageWidth = size.width / 2 - 40.0;
-
+    final double imageWidth = MediaQuery.of(context).size.width / 2 - 40.0;
     return MobileLayout(
       state: NavigationBarState.None,
       isBottomNavigation: false,
@@ -35,6 +32,7 @@ class _MobileAlbumGridState extends State<MobileAlbumGrid> {
             getTitle('Albums'),
             const SizedBox(height: 20),
             GridView.count(
+              physics: ScrollPhysics(),
               crossAxisCount: 2,
               childAspectRatio: imageWidth / imageWidth,
               shrinkWrap: true,
@@ -43,11 +41,10 @@ class _MobileAlbumGridState extends State<MobileAlbumGrid> {
                 widget.albums.length,
                 (index) {
                   return Padding(
-                    padding: EdgeInsets.all(0.0),
+                    padding: EdgeInsets.all(10.0),
                     child: AlbumDesign(
-                      image: widget.albums[index].coverPhoto,
-                      title: widget.albums[index].name,
-                      count: widget.albums[index].count,
+                      album: widget.albums[index],
+                      onAlbumSelected: widget.onAlbumSelected,
                     ),
                   );
                 },
