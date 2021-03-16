@@ -4,6 +4,7 @@ import 'package:seven_paradises/model/facebook/album/album.dart';
 import 'package:seven_paradises/model/facebook/facebook.dart';
 import 'package:seven_paradises/model/facebook/photo/photo.dart';
 import 'package:seven_paradises/model/facebook/photo/photo_paging.dart';
+import 'package:seven_paradises/views/addNewPost/postPreview/postPreview.dart';
 
 import 'device/mobile.dart';
 import 'device/web.dart';
@@ -33,7 +34,10 @@ class _PhotoGridState extends State<PhotoGrid> {
     return Material(
       child: ScreenTypeLayout(
         desktop: WebPhotoGrid(),
-        mobile: MobilePhotoGrid(photos: _photos),
+        mobile: MobilePhotoGrid(
+          photos: _photos,
+          onPhotoSelected: onPhotoSelected,
+        ),
       ),
     );
   }
@@ -46,5 +50,14 @@ class _PhotoGridState extends State<PhotoGrid> {
       _photosNextLink = photos.pagination.next;
     });
     // _controller.forward();
+  }
+
+  void onPhotoSelected(Photo photo) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PostPreview(photo: photo),
+      ),
+    );
   }
 }

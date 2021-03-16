@@ -18,7 +18,6 @@ class AlbumGrid extends StatefulWidget {
 }
 
 class _AlbumGridState extends State<AlbumGrid> {
-  Album _selectedAlbum;
   List<Album> _albums = [];
   String _albumsNextLink;
   List<Photo> _photos = [];
