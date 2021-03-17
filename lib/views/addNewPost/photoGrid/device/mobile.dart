@@ -16,29 +16,32 @@ class MobilePhotoGrid extends StatelessWidget {
     return MobileLayout(
       state: NavigationBarState.None,
       isBottomNavigation: false,
-      view: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: [
-            Row(children: [BackButtonDesign(isDark: true)]),
-            const SizedBox(height: 20),
-            getTitle('Select a photo'),
-            const SizedBox(height: 20),
-            GridView.count(
-              crossAxisCount: 3,
-              physics: ScrollPhysics(),
-              shrinkWrap: true,
-              children: List.generate(photos.length, (index) {
-                return Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: PhotoDesign(
-                    photo: photos[index],
-                    onPhotoSelected: onPhotoSelected,
-                  ),
-                );
-              }),
-            )
-          ],
+      view: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BackButtonDesign(isDark: true),
+              const SizedBox(height: 20),
+              getTitle('Select a photo'),
+              const SizedBox(height: 20),
+              GridView.count(
+                crossAxisCount: 3,
+                physics: ScrollPhysics(),
+                shrinkWrap: true,
+                children: List.generate(photos.length, (index) {
+                  return Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: PhotoDesign(
+                      photo: photos[index],
+                      onPhotoSelected: onPhotoSelected,
+                    ),
+                  );
+                }),
+              )
+            ],
+          ),
         ),
       ),
     );

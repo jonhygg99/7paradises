@@ -72,16 +72,13 @@ class AlbumDesign extends StatelessWidget {
                         topRight: Radius.circular(15.0),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Center(
-                        child: Text(
-                          album.count.toString(),
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: kWhite,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    child: Center(
+                      child: Text(
+                        album.count.toString(),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: kWhite,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

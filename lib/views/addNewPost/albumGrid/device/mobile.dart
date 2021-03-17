@@ -17,34 +17,37 @@ class MobileAlbumGrid extends StatelessWidget {
     return MobileLayout(
       state: NavigationBarState.None,
       isBottomNavigation: false,
-      view: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: [
-            Row(children: [BackButtonDesign(isDark: true)]),
-            const SizedBox(height: 20),
-            getTitle('Albums'),
-            const SizedBox(height: 20),
-            GridView.count(
-              physics: ScrollPhysics(),
-              crossAxisCount: 2,
-              childAspectRatio: imageWidth / imageWidth,
-              shrinkWrap: true,
-              // controller: _controller,
-              children: List.generate(
-                albums.length,
-                (index) {
-                  return Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: AlbumDesign(
-                      album: albums[index],
-                      onAlbumSelected: onAlbumSelected,
-                    ),
-                  );
-                },
-              ),
-            )
-          ],
+      view: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BackButtonDesign(isDark: true),
+              const SizedBox(height: 20),
+              getTitle('Albums'),
+              const SizedBox(height: 20),
+              GridView.count(
+                physics: ScrollPhysics(),
+                crossAxisCount: 2,
+                childAspectRatio: imageWidth / imageWidth,
+                shrinkWrap: true,
+                // controller: _controller,
+                children: List.generate(
+                  albums.length,
+                  (index) {
+                    return Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: AlbumDesign(
+                        album: albums[index],
+                        onAlbumSelected: onAlbumSelected,
+                      ),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
