@@ -20,7 +20,11 @@ class _AddNewPostScreenState extends State<AddNewPostScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: ScreenTypeLayout(
-        desktop: WebAddNewPostScreen(),
+        desktop: WebAddNewPostScreen(
+          facebook: facebook,
+          initFBPicker: initFBPicker,
+          isCheckingFB: isCheckingFB,
+        ),
         mobile: MobileAddNewPostScreen(
           facebook: facebook,
           initFBPicker: initFBPicker,

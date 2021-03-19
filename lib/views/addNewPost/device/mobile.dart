@@ -17,6 +17,7 @@ class MobileAddNewPostScreen extends StatelessWidget {
     @required this.isCheckingFB,
     @required this.initFBPicker,
   });
+
   @override
   Widget build(BuildContext context) {
     return MobileLayout(
