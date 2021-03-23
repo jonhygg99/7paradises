@@ -3,27 +3,25 @@ import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/enum.dart';
 import 'package:seven_paradises/constants/measures.dart';
 
+import '../floatingAddNewPost.dart';
 import '../floating_bottom_navigation_bar.dart';
 import 'navigation.dart';
 import 'settings_app_bar.dart';
 
-class WebLayout extends StatefulWidget {
-  WebLayout({@required this.state, @required this.view});
+class WebLayout extends StatelessWidget {
   final int state;
   final Widget view;
-
-  @override
-  _WebLayoutState createState() => _WebLayoutState();
-}
-
-class _WebLayoutState extends State<WebLayout> {
+  final bool isBottomNavigation;
+  WebLayout({
+    @required this.state,
+    @required this.view,
+    this.isBottomNavigation = true,
+  });
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: widget.state == NavigationBarState.Profile
-            ? settingsAppBar()
-            : null,
+        appBar: state == NavigationBarState.Profile ? settingsAppBar() : null,
         backgroundColor: kLightWhite,
         body: Align(
           alignment: Alignment.topCenter,
@@ -33,16 +31,20 @@ class _WebLayoutState extends State<WebLayout> {
             child: ListView(
               children: [
                 const SizedBox(height: 80.0),
-                widget.view,
+                view,
               ],
             ),
           ),
         ),
+        floatingActionButton:
+            state == NavigationBarState.Profile ? FloatingAddNewPost() : null,
         extendBody: true,
-        bottomNavigationBar: FloatingBottomNavigationBar(
-          state: widget.state,
-          navigateTo: navigateTo,
-        ),
+        bottomNavigationBar: isBottomNavigation
+            ? FloatingBottomNavigationBar(
+                state: state,
+                navigateTo: navigateTo,
+              )
+            : null,
       ),
     );
   }

@@ -1,13 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/enum.dart';
 import 'package:seven_paradises/constants/icons.dart';
+import 'package:seven_paradises/model/facebook/facebook.dart';
 import 'package:seven_paradises/utils/backButton.dart';
 import 'package:seven_paradises/utils/device_layouts/mobile_layout.dart';
 import 'package:seven_paradises/utils/textCreator.dart';
+import 'package:seven_paradises/views/addNewPost/widgets/bubbleButtonPost.dart';
 
 class MobileAddNewPostScreen extends StatelessWidget {
-  MobileAddNewPostScreen();
+  final Facebook facebook;
+  final bool isCheckingFB;
+  final Function initFBPicker;
+  MobileAddNewPostScreen({
+    @required this.facebook,
+    @required this.isCheckingFB,
+    @required this.initFBPicker,
+  });
+
   @override
   Widget build(BuildContext context) {
     return MobileLayout(
@@ -31,46 +41,26 @@ class MobileAddNewPostScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              BubbleButtonPost(icon: Icon(Icons.camera_alt), title: 'Gallery'),
-              BubbleButtonPost(icon: kInstagramDark, title: 'Instagram'),
-              BubbleButtonPost(icon: kFacebookDark, title: 'Facebook'),
+              BubbleButtonPost(
+                icon: kGalleryIcon,
+                title: 'Gallery',
+                action: () {},
+              ),
+              BubbleButtonPost(
+                icon: kInstagramDark,
+                title: 'Instagram',
+                action: () {},
+              ),
+              isCheckingFB
+                  ? CircularProgressIndicator()
+                  : BubbleButtonPost(
+                      icon: kFacebookDark,
+                      title: 'Facebook',
+                      action: initFBPicker,
+                    ),
               const SizedBox(height: 130)
             ],
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class BubbleButtonPost extends StatelessWidget {
-  BubbleButtonPost({@required this.icon, @required this.title});
-  final Widget icon;
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: [
-          SizedBox(
-            width: 50,
-            height: 50,
-            child: RaisedButton(
-              onPressed: () {},
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              padding: EdgeInsets.all(0),
-              color: kWhite,
-              child: icon,
-            ),
-          ),
-          const SizedBox(height: 5.0),
-          Text(
-            title,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
         ],
       ),
     );

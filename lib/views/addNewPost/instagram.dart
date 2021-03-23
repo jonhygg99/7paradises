@@ -69,7 +69,7 @@ class Instagram {
     /// Returning status request as bool.
     final String fields = userFields.join(',');
     final http.Response responseNode = await http.get(
-        'https://graph.instagram.com/$userID?fields=${fields}&access_token=${accessToken}');
+        'https://graph.instagram.com/$userID?fields=$fields&access_token=$accessToken');
     instaProfile = {
       'id': json.decode(responseNode.body)['id'].toString(),
       'username': json.decode(responseNode.body)['username'],
