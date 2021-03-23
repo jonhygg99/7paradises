@@ -26,40 +26,47 @@ class MobilePostPreview extends StatelessWidget {
       view: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonDesign(isDark: true),
-                  const SizedBox(height: 20),
-                  getTitle('Select a photo'),
-                  const SizedBox(height: 20),
-                  Container(
-                    height: 170,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(photo.source),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+                minHeight: MediaQuery.of(context).size.height -
+                    MediaQuery.of(context).padding.top -
+                    20 -
+                    50),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BackButtonDesign(isDark: true),
+                    const SizedBox(height: 20),
+                    getTitle('Select a photo'),
+                    const SizedBox(height: 20),
+                    Container(
+                      height: 170,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(photo.source),
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  getTitle('Place'),
-                  const SizedBox(height: 20),
-                  PlaceTextField(controller: placeController),
-                  const SizedBox(height: 20),
-                  getTitle('Description'),
-                  const SizedBox(height: 20),
-                  DescriptionTextField(controller: descriptionController),
-                  const SizedBox(height: 20),
-                ],
-              ),
-              PostButton(),
-            ],
+                    const SizedBox(height: 20),
+                    getTitle('Place'),
+                    const SizedBox(height: 20),
+                    PlaceTextField(controller: placeController),
+                    const SizedBox(height: 20),
+                    getTitle('Description'),
+                    const SizedBox(height: 20),
+                    DescriptionTextField(controller: descriptionController),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+                PostButton(),
+              ],
+            ),
           ),
         ),
       ),
