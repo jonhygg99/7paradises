@@ -16,26 +16,13 @@ class Facebook {
     try {
       isChecking();
       // by default the login method has the next permissions ['email','public_profile']
-      _accessToken = await FacebookAuth.instance
+      final LoginResult loginResult = await FacebookAuth.instance
           .login(permissions: ['email', 'public_profile', 'user_photos']);
-      print(_accessToken.toJson());
-      _userData =
-          await FacebookAuth.instance.getUserData(fields: "name,photos");
-      print(_userData);
+      if (loginResult.status == LoginStatus.success)
+        _userData =
+            await FacebookAuth.instance.getUserData(fields: "name,photos");
+      _accessToken = loginResult.accessToken;
       isLoggedFB(true);
-    } on FacebookAuthException catch (e) {
-      isLoggedFB(false);
-      switch (e.errorCode) {
-        case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
-          print("You have a previous login operation in progress");
-          break;
-        case FacebookAuthErrorCode.CANCELLED:
-          print("login cancelled");
-          break;
-        case FacebookAuthErrorCode.FAILED:
-          print("login failed");
-          break;
-      }
     } catch (e, s) {
       // print in the logs the unknown errors
       print(e);
@@ -53,12 +40,11 @@ class Facebook {
   }
 
   Future<void> checkIfIsLogged(isNotChecking, isLoggedFB) async {
-    _accessToken = await FacebookAuth.instance.isLogged;
+    _accessToken = await FacebookAuth.instance.accessToken;
     isNotChecking();
     if (_accessToken != null) {
       _userData =
           await FacebookAuth.instance.getUserData(fields: "name,photos");
-      print(_userData);
       isLoggedFB(true);
     } else
       isLoggedFB(false);
@@ -73,8 +59,6 @@ class Facebook {
     if (response.statusCode != 200)
       print('Error fetch albums with user id: ${_userData['id']}\n'
           'Status code:${response.statusCode}');
-    else
-      print(body);
 
     return AlbumPaging.fromJson(body);
   }
@@ -90,7 +74,6 @@ class Facebook {
       print('Error fetch album with id: ${album.id}.\n'
           'Status code: ${response.statusCode}');
 
-    print(body);
     return PhotoPaging.fromJson(body);
   }
 }

@@ -12,10 +12,12 @@ class WebLayout extends StatelessWidget {
   final int state;
   final Widget view;
   final bool isBottomNavigation;
+  final Widget bottomSheet;
   WebLayout({
     @required this.state,
     @required this.view,
     this.isBottomNavigation = true,
+    this.bottomSheet,
   });
   @override
   Widget build(BuildContext context) {
@@ -27,18 +29,17 @@ class WebLayout extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: Padding(
             padding: const EdgeInsets.only(
-                left: kDefaultWebPadding, right: kDefaultWebPadding),
-            child: ListView(
-              children: [
-                const SizedBox(height: 80.0),
-                view,
-              ],
+              left: kDefaultWebPaddingHorizontal,
+              right: kDefaultWebPaddingHorizontal,
+              top: kDefaultWebPaddingTop,
             ),
+            child: SingleChildScrollView(child: view),
           ),
         ),
         floatingActionButton:
             state == NavigationBarState.Profile ? FloatingAddNewPost() : null,
         extendBody: true,
+        bottomSheet: bottomSheet,
         bottomNavigationBar: isBottomNavigation
             ? FloatingBottomNavigationBar(
                 state: state,

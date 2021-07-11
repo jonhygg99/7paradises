@@ -32,8 +32,7 @@ class TopView extends StatelessWidget {
             backgroundColor: kWhite,
             child: CircleAvatar(
               radius: 30,
-              backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1608161317468-535e91d1fa9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'),
+              backgroundImage: NetworkImage(image),
             ),
           ),
         ),

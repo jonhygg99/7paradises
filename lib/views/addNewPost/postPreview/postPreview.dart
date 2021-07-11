@@ -27,7 +27,11 @@ class _PostPreviewState extends State<PostPreview> {
   Widget build(BuildContext context) {
     return Material(
       child: ScreenTypeLayout(
-        desktop: WebPostPreview(),
+        desktop: WebPostPreview(
+          photo: widget.photo,
+          placeController: placeController,
+          descriptionController: descriptionController,
+        ),
         mobile: MobilePostPreview(
           photo: widget.photo,
           placeController: placeController,

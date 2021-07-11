@@ -29,7 +29,14 @@ class _PlaceScreenState extends State<PlaceScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: ScreenTypeLayout(
-        desktop: WebPlaceScreen(textController: textController, id: widget.id),
+        desktop: WebPlaceScreen(
+          textController: textController,
+          id: widget.id,
+          isEmpty: isEmpty,
+          isLiked: isLiked,
+          toggleIsEmpty: toggleIsEmpty,
+          toggleIsLike: toggleIsLike,
+        ),
         mobile: MobilePlaceScreen(
           textController: textController,
           id: widget.id,

@@ -2,23 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/model/facebook/album/album.dart';
 
-class AlbumDesign extends StatelessWidget {
-  final Album album;
-  final Function onAlbumSelected;
-  AlbumDesign({@required this.album, @required this.onAlbumSelected});
-  @override
-  Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-    final imageWidth = width / 2 - 40.0;
-    final countWidth = width / 5 - 40.0;
-    return album == null
-        ? CircularProgressIndicator()
-        : RaisedButton(
-            onPressed: () => onAlbumSelected(album),
-            padding: const EdgeInsets.all(0.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
+// ignore: non_constant_identifier_names
+Widget AlbumDesign(Album album, Function onAlbumSelected, double albumSize) {
+  final countWidth = albumSize / 4;
+  return album == null
+      ? CircularProgressIndicator()
+      : RaisedButton(
+          onPressed: () => onAlbumSelected(album),
+          padding: const EdgeInsets.all(0.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Container(
+            width: albumSize,
+            height: albumSize,
             child: Stack(
               children: [
                 Container(
@@ -31,9 +28,9 @@ class AlbumDesign extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: imageWidth - 30.0,
+                  top: albumSize - 30.0,
                   child: Container(
-                    width: imageWidth,
+                    width: albumSize,
                     height: 30.0,
                     decoration: BoxDecoration(
                       color: kBlackOpacity50,
@@ -59,7 +56,7 @@ class AlbumDesign extends StatelessWidget {
                 ),
                 Positioned(
                   top: 0,
-                  left: imageWidth - countWidth,
+                  left: albumSize - countWidth,
                   child: Container(
                     width: countWidth,
                     height: 30.0,
@@ -86,6 +83,6 @@ class AlbumDesign extends StatelessWidget {
                 ),
               ],
             ),
-          );
-  }
+          ),
+        );
 }

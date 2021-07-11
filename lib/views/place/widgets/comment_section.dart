@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/icons.dart';
 
 import 'comment_design.dart';
@@ -8,37 +9,40 @@ class CommentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.center,
-          children: [
-            ListView(
-              children: _getComments(),
-            ),
-            Positioned(
-              top: -30.0,
-              child: Align(
-                alignment: Alignment.center,
-                child: Row(
-                  children: [
-                    MiddleButton(
-                      isLeft: true,
-                      iconData: kAddData,
-                      action: () {},
-                    ),
-                    MiddleButton(
-                      isLeft: false,
-                      iconData: kAirplaneData,
-                      rotate: true,
-                      action: () {},
-                    ),
-                  ],
+      child: Container(
+        color: kMediumWhite,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.center,
+            children: [
+              ListView(
+                children: _getComments(),
+              ),
+              Positioned(
+                top: -30.0,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: [
+                      MiddleButton(
+                        isLeft: true,
+                        iconData: kAddData,
+                        action: () {},
+                      ),
+                      MiddleButton(
+                        isLeft: false,
+                        iconData: kAirplaneData,
+                        rotate: true,
+                        action: () {},
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

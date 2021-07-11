@@ -33,7 +33,10 @@ class _PhotoGridState extends State<PhotoGrid> {
   Widget build(BuildContext context) {
     return Material(
       child: ScreenTypeLayout(
-        desktop: WebPhotoGrid(),
+        desktop: WebPhotoGrid(
+          photos: _photos,
+          onPhotoSelected: onPhotoSelected,
+        ),
         mobile: MobilePhotoGrid(
           photos: _photos,
           onPhotoSelected: onPhotoSelected,

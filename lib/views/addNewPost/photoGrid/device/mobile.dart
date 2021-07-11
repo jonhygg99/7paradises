@@ -4,6 +4,7 @@ import 'package:seven_paradises/constants/enum.dart';
 import 'package:seven_paradises/model/facebook/photo/photo.dart';
 import 'package:seven_paradises/utils/backButton.dart';
 import 'package:seven_paradises/utils/device_layouts/mobile_layout.dart';
+import 'package:seven_paradises/utils/newGridView.dart';
 import 'package:seven_paradises/utils/textCreator.dart';
 import 'package:seven_paradises/views/addNewPost/photoGrid/widgets/photoDesign.dart';
 
@@ -19,28 +20,23 @@ class MobilePhotoGrid extends StatelessWidget {
       view: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BackButtonDesign(isDark: true),
-              const SizedBox(height: 20),
-              getTitle('Select a photo'),
-              const SizedBox(height: 20),
-              GridView.count(
-                crossAxisCount: 3,
-                physics: ScrollPhysics(),
-                shrinkWrap: true,
-                children: List.generate(photos.length, (index) {
-                  return Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: PhotoDesign(
-                      photo: photos[index],
-                      onPhotoSelected: onPhotoSelected,
-                    ),
-                  );
-                }),
-              )
-            ],
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                BackButtonDesign(isDark: true),
+                const SizedBox(height: 20),
+                getTitle('Select a photo'),
+                const SizedBox(height: 20),
+                NewGridView(
+                  data: photos,
+                  action: onPhotoSelected,
+                  widget: PhotoDesign,
+                  minSize: 225,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -34,7 +34,8 @@ class _AlbumGridState extends State<AlbumGrid> {
   Widget build(BuildContext context) {
     return Material(
       child: ScreenTypeLayout(
-        desktop: WebAlbumGrid(),
+        desktop:
+            WebAlbumGrid(albums: _albums, onAlbumSelected: onAlbumSelected),
         mobile:
             MobileAlbumGrid(albums: _albums, onAlbumSelected: onAlbumSelected),
       ),

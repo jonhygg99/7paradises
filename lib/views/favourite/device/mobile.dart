@@ -14,6 +14,7 @@ class MobileFavouriteScreen extends StatelessWidget {
       state: NavigationBarState.Favourite,
       view: ListView(
         children: [
+          const SizedBox(height: 20.0),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: getTitle('Favourites')),

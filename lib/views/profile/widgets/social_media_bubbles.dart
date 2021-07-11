@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:seven_paradises/constants/colors.dart';
 import 'package:seven_paradises/constants/enum.dart';
@@ -46,10 +45,10 @@ class SocialMediaBubbles extends StatelessWidget {
       ),
       onPressed: () {
         try {
-          if (Platform.isIOS || Platform.isAndroid)
-            _launchURLInMobile(url);
-          else
+          if (kIsWeb)
             _launchURLInWeb(url);
+          else
+            _launchURLInMobile(url);
         } catch (e) {
           print(e);
         }

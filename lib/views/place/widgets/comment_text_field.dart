@@ -19,7 +19,7 @@ class CommentTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       child: Row(
         children: [
           Expanded(
@@ -54,16 +54,19 @@ class CommentTextField extends StatelessWidget {
                       ),
                     ),
                   ),
-                  InkWell(
-                    child: Icon(
-                      kSendIconData,
-                      color: isEmpty ? kGrey : kBlack,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: InkWell(
+                      child: Icon(
+                        kSendIconData,
+                        color: isEmpty ? kGrey : kBlack,
+                      ),
+                      onTap: isEmpty
+                          ? null
+                          : () {
+                              print('Sent!');
+                            },
                     ),
-                    onTap: isEmpty
-                        ? null
-                        : () {
-                            print('Sent!');
-                          },
                   ),
                 ],
               ),

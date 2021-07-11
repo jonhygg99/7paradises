@@ -6,6 +6,7 @@ import 'package:seven_paradises/utils/backButton.dart';
 import 'package:seven_paradises/utils/device_layouts/mobile_layout.dart';
 import 'package:seven_paradises/utils/textCreator.dart';
 import 'package:seven_paradises/views/addNewPost/postPreview/widgets/descriptionTextField.dart';
+import 'package:seven_paradises/views/addNewPost/postPreview/widgets/imagePreview.dart';
 import 'package:seven_paradises/views/addNewPost/postPreview/widgets/placeTextField.dart';
 import 'package:seven_paradises/views/addNewPost/postPreview/widgets/postButton.dart';
 
@@ -43,16 +44,7 @@ class MobilePostPreview extends StatelessWidget {
                     const SizedBox(height: 20),
                     getTitle('Select a photo'),
                     const SizedBox(height: 20),
-                    Container(
-                      height: 170,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(photo.source),
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      ),
-                    ),
+                    ImagePreview(image: photo.source),
                     const SizedBox(height: 20),
                     getTitle('Place'),
                     const SizedBox(height: 20),

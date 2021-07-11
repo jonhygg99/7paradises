@@ -28,7 +28,7 @@ class ImageFeed extends StatelessWidget {
         else if (sizingInformation.deviceScreenType == DeviceScreenType.tablet)
           horizontalValue = 3;
         else if (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-          horizontalValue = (widthScreen - kDefaultWebPadding) ~/ 250;
+          horizontalValue = (widthScreen - kDefaultWebPaddingHorizontal) ~/ 250;
 
         return StaggeredGridView.countBuilder(
           primary: false,

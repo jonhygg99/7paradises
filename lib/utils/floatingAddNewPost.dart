@@ -13,7 +13,7 @@ class FloatingAddNewPost extends StatelessWidget {
       desktop: FloatingActionButton.extended(
         onPressed: () => navigateToAddNewPost(context),
         label: Text(
-          'Add new post',
+          'Add a new post',
           style: TextStyle(color: kBlack),
         ),
         icon: kAddNewPostIcon,

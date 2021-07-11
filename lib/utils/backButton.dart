@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_paradises/config/application.dart';
 import 'package:seven_paradises/constants/colors.dart';
@@ -11,7 +12,13 @@ class BackButtonDesign extends StatelessWidget {
       width: 52.0,
       height: 52.0,
       child: RaisedButton(
-        onPressed: () => Application.router.pop(context),
+        onPressed: () => {
+          print('pressed'),
+          if (kIsWeb)
+            Navigator.pop(context)
+          else
+            Application.router.pop(context)
+        },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),

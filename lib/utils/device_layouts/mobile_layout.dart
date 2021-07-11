@@ -12,11 +12,12 @@ class MobileLayout extends StatelessWidget {
   final Widget view;
   final bool isBottomNavigation;
   final Widget bottomSheet;
-  MobileLayout(
-      {@required this.state,
-      @required this.view,
-      this.isBottomNavigation = true,
-      this.bottomSheet});
+  MobileLayout({
+    @required this.state,
+    @required this.view,
+    this.isBottomNavigation = true,
+    this.bottomSheet,
+  });
 
   @override
   Widget build(BuildContext context) {

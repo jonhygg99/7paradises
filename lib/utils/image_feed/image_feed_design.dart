@@ -14,8 +14,11 @@ class ImageFeedDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Application.router.navigateTo(context, kPlaceRoute + place,
-          transition: TransitionType.none),
+      onTap: () => Application.router.navigateTo(
+        context,
+        kPlaceRoute + place,
+        transition: TransitionType.none,
+      ),
       child: Stack(
         children: [
           Container(
