@@ -11,12 +11,10 @@ class MobileLayout extends StatelessWidget {
   final int state;
   final Widget view;
   final bool isBottomNavigation;
-  final Widget bottomSheet;
   MobileLayout({
     @required this.state,
     @required this.view,
     this.isBottomNavigation = true,
-    this.bottomSheet,
   });
 
   @override
@@ -29,7 +27,6 @@ class MobileLayout extends StatelessWidget {
         floatingActionButton:
             state == NavigationBarState.Profile ? FloatingAddNewPost() : null,
         extendBody: true,
-        bottomSheet: bottomSheet,
         bottomNavigationBar: isBottomNavigation
             ? FloatingBottomNavigationBar(
                 state: state,

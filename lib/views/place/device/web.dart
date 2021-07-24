@@ -26,29 +26,34 @@ class WebPlaceScreen extends StatelessWidget {
     return WebLayout(
       state: NavigationBarState.None,
       isBottomNavigation: false,
-      bottomSheet: Align(
-        alignment: Alignment.bottomCenter,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: kDefaultWebMaxWidth),
-          child: CommentTextField(
-            textController: textController,
-            isEmpty: isEmpty,
-            isLiked: isLiked,
-            toggleIsEmpty: toggleIsEmpty,
-            toggleIsLike: toggleIsLike,
-          ),
-        ),
-      ),
+      isTopPadding: false,
       view: ConstrainedBox(
         constraints: BoxConstraints(
           maxHeight: MediaQuery.of(context).size.height,
           maxWidth: kDefaultWebMaxWidth,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            TopView(id),
-            CommentSection(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TopView(id),
+                CommentSection(),
+              ],
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: kDefaultWebMaxWidth),
+                child: CommentTextField(
+                  textController: textController,
+                  isEmpty: isEmpty,
+                  isLiked: isLiked,
+                  toggleIsEmpty: toggleIsEmpty,
+                  toggleIsLike: toggleIsLike,
+                ),
+              ),
+            ),
           ],
         ),
       ),

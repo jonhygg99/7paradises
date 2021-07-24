@@ -25,18 +25,25 @@ class MobilePlaceScreen extends StatelessWidget {
     return MobileLayout(
       state: NavigationBarState.None,
       isBottomNavigation: false,
-      bottomSheet: CommentTextField(
-        textController: textController,
-        isEmpty: isEmpty,
-        isLiked: isLiked,
-        toggleIsEmpty: toggleIsEmpty,
-        toggleIsLike: toggleIsLike,
-      ),
-      view: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      view: Stack(
         children: [
-          TopView(id),
-          CommentSection(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopView(id),
+              CommentSection(),
+            ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: CommentTextField(
+              textController: textController,
+              isEmpty: isEmpty,
+              isLiked: isLiked,
+              toggleIsEmpty: toggleIsEmpty,
+              toggleIsLike: toggleIsLike,
+            ),
+          ),
         ],
       ),
     );

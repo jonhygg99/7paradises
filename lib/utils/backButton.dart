@@ -12,13 +12,7 @@ class BackButtonDesign extends StatelessWidget {
       width: 52.0,
       height: 52.0,
       child: RaisedButton(
-        onPressed: () => {
-          print('pressed'),
-          if (kIsWeb)
-            Navigator.pop(context)
-          else
-            Application.router.pop(context)
-        },
+        onPressed: () => Application.router.pop(context),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),

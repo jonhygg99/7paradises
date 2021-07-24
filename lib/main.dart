@@ -28,10 +28,6 @@ class AppComponentState extends State<AppComponent> {
       title: '7paradises',
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Application.router.generator,
-      theme: ThemeData(
-        bottomSheetTheme:
-            BottomSheetThemeData(backgroundColor: Colors.black.withOpacity(0)),
-      ),
     );
     return app;
   }
