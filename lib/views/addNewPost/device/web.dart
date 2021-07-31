@@ -9,11 +9,11 @@ import 'package:seven_paradises/views/addNewPost/widgets/bubbleButtonPost.dart';
 
 class WebAddNewPostScreen extends StatelessWidget {
   final Facebook facebook;
-  final bool isCheckingFB;
+  final bool loaderFB;
   final Function initFBPicker;
   WebAddNewPostScreen({
     @required this.facebook,
-    @required this.isCheckingFB,
+    @required this.loaderFB,
     @required this.initFBPicker,
   });
 
@@ -49,7 +49,7 @@ class WebAddNewPostScreen extends StatelessWidget {
                   title: 'Instagram',
                   action: () {},
                 ),
-                isCheckingFB
+                loaderFB
                     ? CircularProgressIndicator()
                     : BubbleButtonPost(
                         icon: kFacebookDark,

@@ -12,23 +12,26 @@ class Facebook {
   Map<String, dynamic> _userData;
   AccessToken _accessToken;
 
-  Future<void> login(isChecking, isNotChecking, isLoggedFB) async {
+  Future<void> login(addFBLoader, cancelFBLoader, isFBLogged) async {
     try {
-      isChecking();
+      addFBLoader();
       // by default the login method has the next permissions ['email','public_profile']
       final LoginResult loginResult = await FacebookAuth.instance
           .login(permissions: ['email', 'public_profile', 'user_photos']);
-      if (loginResult.status == LoginStatus.success)
+      if (loginResult.status == LoginStatus.success) {
         _userData =
-            await FacebookAuth.instance.getUserData(fields: "name,photos");
-      _accessToken = loginResult.accessToken;
-      isLoggedFB(true);
+        await FacebookAuth.instance.getUserData(fields: "name,photos");
+        _accessToken = loginResult.accessToken;
+        isFBLogged(true);
+      } else {
+        isFBLogged(false);
+      }
     } catch (e, s) {
       // print in the logs the unknown errors
       print(e);
       print(s);
     } finally {
-      isNotChecking();
+      cancelFBLoader();
     }
   }
 
@@ -39,9 +42,8 @@ class Facebook {
     isLoggedFB(false);
   }
 
-  Future<void> checkIfIsLogged(isNotChecking, isLoggedFB) async {
+  Future<void> checkIfIsLogged(isLoggedFB) async {
     _accessToken = await FacebookAuth.instance.accessToken;
-    isNotChecking();
     if (_accessToken != null) {
       _userData =
           await FacebookAuth.instance.getUserData(fields: "name,photos");

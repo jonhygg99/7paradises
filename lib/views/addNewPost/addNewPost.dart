@@ -13,7 +13,7 @@ class AddNewPostScreen extends StatefulWidget {
 
 class _AddNewPostScreenState extends State<AddNewPostScreen> {
   Facebook facebook = Facebook();
-  bool isCheckingFB = false;
+  bool loaderFB = false;
   bool isLoggedFB = false;
 
   @override
@@ -23,23 +23,23 @@ class _AddNewPostScreenState extends State<AddNewPostScreen> {
         desktop: WebAddNewPostScreen(
           facebook: facebook,
           initFBPicker: initFBPicker,
-          isCheckingFB: isCheckingFB,
+          loaderFB: loaderFB,
         ),
         mobile: MobileAddNewPostScreen(
           facebook: facebook,
           initFBPicker: initFBPicker,
-          isCheckingFB: isCheckingFB,
+          loaderFB: loaderFB,
         ),
       ),
     );
   }
 
-  void isNotCheckingFB() {
-    setState(() => isCheckingFB = false);
+  void cancelFBLoader() {
+    setState(() => loaderFB = false);
   }
 
-  void isFBChecking() {
-    setState(() => isCheckingFB = true);
+  void addFBLoader() {
+    setState(() => loaderFB = true);
   }
 
   void isFBLogged(isLogged) {
@@ -48,10 +48,10 @@ class _AddNewPostScreenState extends State<AddNewPostScreen> {
 
   void initFBPicker() {
     facebook
-        .checkIfIsLogged(isNotCheckingFB, isFBLogged)
+        .checkIfIsLogged(isFBLogged)
         .then((v) async => {
               if (!isLoggedFB)
-                await facebook.login(isFBChecking, isNotCheckingFB, isFBLogged)
+                await facebook.login(addFBLoader, cancelFBLoader, isFBLogged)
             })
         .then((v) => {
               if (isLoggedFB)
