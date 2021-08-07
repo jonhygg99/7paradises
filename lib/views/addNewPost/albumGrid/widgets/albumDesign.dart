@@ -7,11 +7,13 @@ Widget AlbumDesign(Album album, Function onAlbumSelected, double albumSize) {
   final countWidth = albumSize / 4;
   return album == null
       ? CircularProgressIndicator()
-      : RaisedButton(
+      : ElevatedButton(
           onPressed: () => onAlbumSelected(album),
-          padding: const EdgeInsets.all(0.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(0.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
           ),
           child: Container(
             width: albumSize,

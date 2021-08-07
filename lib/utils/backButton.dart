@@ -11,12 +11,14 @@ class BackButtonDesign extends StatelessWidget {
     return SizedBox(
       width: 52.0,
       height: 52.0,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: () => Application.router.pop(context),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+        style: ElevatedButton.styleFrom(
+            primary: isDark ? kBlack : kWhite,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
         ),
-        color: isDark ? kBlack : kWhite,
         child: Icon(
           Icons.arrow_back,
           color: isDark ? kWhite : kBlack,

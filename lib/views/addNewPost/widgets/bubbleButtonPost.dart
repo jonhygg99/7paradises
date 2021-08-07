@@ -16,13 +16,14 @@ class BubbleButtonPost extends StatelessWidget {
           SizedBox(
             width: 50,
             height: 50,
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: action,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              padding: EdgeInsets.all(0),
-              color: kWhite,
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  padding: EdgeInsets.all(0),
+                  primary: kWhite),
               child: icon,
             ),
           ),

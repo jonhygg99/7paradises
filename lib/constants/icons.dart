@@ -30,5 +30,5 @@ const Icon kNoLike = Icon(Icons.favorite_outline_rounded);
 const Icon kLike = Icon(Icons.favorite, color: Colors.red);
 
 // Add new post Screen
-const Icon kGalleryIcon = Icon(Icons.camera_alt);
+final Icon kGalleryIcon = Icon(Icons.camera_alt, color: kBlack);
 final Icon kAddNewPostIcon = Icon(Icons.camera_alt, color: kBlack);

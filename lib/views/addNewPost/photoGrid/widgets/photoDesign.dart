@@ -5,11 +5,13 @@ import 'package:seven_paradises/model/facebook/photo/photo.dart';
 Widget PhotoDesign(Photo photo, Function onPhotoSelected, double photoSize) {
   return photo == null
       ? CircularProgressIndicator()
-      : RaisedButton(
+      : ElevatedButton(
           onPressed: () => onPhotoSelected(photo),
-          padding: const EdgeInsets.all(0.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(0.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
           ),
           child: Container(
             width: photoSize,

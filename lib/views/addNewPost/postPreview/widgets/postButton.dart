@@ -6,12 +6,18 @@ import 'package:seven_paradises/utils/device_layouts/navigation.dart';
 class PostButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: () {
         navigateTo(
             context, NavigationBarState.Profile, NavigationBarState.None);
       },
-      padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+        primary: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50.0),
+        ),
+      ),
       child: Text(
         'Post',
         style: TextStyle(
@@ -19,10 +25,6 @@ class PostButton extends StatelessWidget {
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),
-      ),
-      color: Colors.blue,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50.0),
       ),
     );
   }
